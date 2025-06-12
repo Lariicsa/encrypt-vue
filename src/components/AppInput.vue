@@ -1,6 +1,8 @@
 <template>
-  <input class="w-full bg-transparent h-[40px] border-b border-gray-100 placeholder:text-blue-300"
-  :type="type" :name="name" :alt="alt" :placeholder="placeholder" :value="props.modelValue"
+  <label :for="name" v-show="modelValue !== undefined" class="text-slate-400">{{ label }}</label>
+  <input
+    class="w-full bg-transparent h-[48px] border-b border-slate-400 placeholder:text-slate-500 text-slate-300 outline-none"
+    :type="type" :name="name" :alt="alt" :placeholder="placeholder" :value="props.modelValue"
     @input="emit('update:modelValue', $event.target.value)" />
 </template>
 <script setup>
@@ -15,16 +17,21 @@ const props = defineProps({
     type: String,
     default: 'text'
   },
+  label: {
+    type: String,
+    default: 'label'
+  },
   placeholder: {
     type: String,
-    default: 'Ingresa tu texto'
+    default: 'Add your text to convert'
   },
   alt: {
     type: String,
     default: 'text'
   },
   modelValue: {
-    type: [String]
+    type: String,
+    default: undefined
   }
 })
 
