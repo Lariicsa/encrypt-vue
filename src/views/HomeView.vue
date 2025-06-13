@@ -11,9 +11,6 @@ const inputText = ref(undefined)
 const encryptedText = ref(undefined)
 const mySecret = 'turangaLeela'
 const isEncrypted = ref(false)
-const textValue = computed(() => {
-  return inputText.value
-})
 
 function getEncrypted() {
   encryptedText.value = CryptoJS.AES.encrypt(inputText.value, mySecret).toString()
