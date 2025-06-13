@@ -1,16 +1,25 @@
-import './assets/main.css'
+import "./assets/main.css";
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import VueCryptojs from 'vue-cryptojs'
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import VueCryptojs from "vue-cryptojs";
 
-import App from './App.vue'
-import router from './router'
+/*FontAwesome Core*/
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-const app = createApp(App)
+import App from "./App.vue";
+import router from "./router";
 
-app.use(createPinia())
-app.use(router)
-app.use(VueCryptojs)
+import { faCopy, faFile } from "@fortawesome/free-regular-svg-icons";
 
-app.mount('#app')
+library.add(faCopy, faFile);
+
+const app = createApp(App);
+
+app.use(createPinia());
+app.use(router);
+app.component("font-awesome-icon", FontAwesomeIcon);
+app.use(VueCryptojs);
+
+app.mount("#app");
