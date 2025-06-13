@@ -43,17 +43,21 @@ const props = defineProps({
     default: false,
   }
 });
+const emit = defineEmits(['click'])
+
+const click = () => {
+  emit('click')
+}
 </script>
 <template>
   <a v-if="isLink" :href="link" target="_blank"
-    class="flex flex-col justify-center items-center border-none rounded-md text-center"
-    role="button" :class="`${color} ${size}`">
+    class="flex flex-col justify-center items-center border-none rounded-md text-center" role="button"
+    :class="`${color} ${size}`">
     <slot></slot>
   </a>
 
-  <button v-else role="button"
-    class="flex flex-col justify-center items-center border-none rounded-md"
-    type="submit" :class="`${color} ${size}`">
+  <button v-else role="button" @click="click()" class="flex flex-col justify-center items-center border-none rounded-md"
+    :class="`${color} ${size}`">
     <slot></slot>
   </button>
 </template>

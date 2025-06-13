@@ -11,12 +11,12 @@
     <h2 class="text-lg text-[#bcede8] mt-4">
       {{ subtitle }}
     </h2>
-    <form class="w-full h-full flex-col justify-center items-center mt-[48px]">
+    <div class="w-full h-full flex-col justify-center items-center mt-[48px]">
       <AppInput v-model="inputText" :label="label" :name="name" />
-      <AppButton :color="inputText === undefined ? 'disabled' : 'peach'" size="md" class="mt-[24px]">
+      <AppButton :color="inputText === undefined ? 'disabled' : 'peach'" size="md" class="mt-[24px]" @click="click">
         Encript
       </AppButton>
-    </form>
+    </div>
     <div class="flex-col w-full justify-center items-center mt-[56px] h-auto">
       <p :class="isEncrypted ? 'text-green-300' : 'text-yellow-200'">Text Encrypted</p>
       <div class="flex w-full bg-slate-400 text-slate-600 h-[200px] rounded-sm p-[16px] font-mono">
@@ -26,7 +26,7 @@
   </div>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { ref, defineEmits } from 'vue'
 import AppButton from "@/components/AppButton.vue";
 import AppInput from '@/components/AppInput.vue';
 
@@ -57,6 +57,11 @@ defineProps({
   isEncrypted: {
     type: Boolean,
     default: false
-  }
+  },
 })
+const emit = defineEmits(['click'])
+
+const click = () => {
+  emit('click')
+}
 </script>
