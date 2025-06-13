@@ -1,7 +1,11 @@
 <script setup>
-import { ref, inject, computed } from 'vue'
+import { ref, inject } from 'vue'
 import AppForm from '@/components/AppForm.vue';
 import CryptoJS from 'crypto-js'
+
+import AppToaster from '@/components/AppToaster.vue'
+
+
 
 const logo = ('/planet_express_logo.svg')
 const title = 'Hi there !'
@@ -20,6 +24,7 @@ function getEncrypted() {
 function copyEncrypted(text) {
   navigator.clipboard.writeText(text);
 }
+
 </script>
 
 <template>
@@ -33,5 +38,6 @@ function copyEncrypted(text) {
       </AppForm>
     </div>
   </div>
+
 
 </template>
