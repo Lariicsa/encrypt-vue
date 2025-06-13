@@ -21,13 +21,13 @@
     <div class="flex-col w-full justify-center items-center mt-[54px] h-auto">
       <p :class="isEncrypted ? 'text-green-300' : 'text-yellow-200'" class="mb-[3px]">Text Encrypted</p>
       <div
-        class="flex relative w-full bg-slate-300 text-slate-600 h-[200px] break-all rounded-sm px-[16px] pt-[42px] pb-[16px] font-mono"
+        class="flex relative w-full bg-slate-400 text-slate-600 h-[200px] break-all rounded-sm px-[16px] pt-[42px] pb-[16px] font-mono"
         aria-label="text encrypted">
         <font-awesome-icon icon="fa-regular fa-copy" @click="copyEncrypted" v-show="isEncrypted"
           class="ml-auto w-[20px] h-[20px] text-slate-500 sm:hover:text-slate-600 absolute top-[12px] right-[12px] activate:text-slate-600 sm:hover:cursor-pointer" />
         <slot v-if="isEncrypted"></slot>
         <div v-else class="flex justify-center items-center w-full h-full">
-          <font-awesome-icon icon="fa-regular fa-file" class="w-8 h-10 text-slate-400" />
+          <font-awesome-icon icon="fa-regular fa-file" class="w-8 h-10 text-slate-500" />
         </div>
 
       </div>
