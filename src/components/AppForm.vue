@@ -12,9 +12,9 @@
       {{ subtitle }}
     </h2>
     <form @submit.prevent novalidate class="w-full h-full flex-col justify-center items-center mt-[48px]">
-      <AppInput v-model="inputText" :label="label" :name="name" />
-      <AppButton :color="isTextTyped? 'disabled' : 'peach'" size="md" class="mt-[24px]"
-        :disabled="isTextTyped" @click="click">
+      <AppInput v-model="inputText" :label="label" :name="name" @resetInput="resetInput" />
+      <AppButton :color="isTextTyped ? 'disabled' : 'peach'" size="md" class="mt-[24px]" :disabled="isTextTyped"
+        @click="click">
         Encript
       </AppButton>
     </form>
@@ -80,4 +80,7 @@ const copyEncrypted = () => {
 const isTextTyped = computed(() => {
   return inputText.value === undefined || inputText.value === '' ? true : false
 })
+const resetInput = () => {
+  inputText.value = undefined
+}
 </script>

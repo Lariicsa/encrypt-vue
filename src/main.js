@@ -11,9 +11,9 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import App from "./App.vue";
 import router from "./router";
 
-import { faCopy, faFile } from "@fortawesome/free-regular-svg-icons";
+import { faCopy, faFile, faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 
-library.add(faCopy, faFile);
+library.add(faCopy, faFile, faCircleXmark);
 
 const app = createApp(App);
 
