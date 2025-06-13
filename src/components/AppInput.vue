@@ -1,9 +1,12 @@
 <template>
-  <label :for="name" v-show="modelValue !== undefined" class="text-slate-400">{{ label }}</label>
-  <input
-    class="w-full bg-transparent h-[48px] border-b border-slate-400 placeholder:text-slate-500 text-slate-300 outline-none"
-    :type="type" :name="name" :alt="alt" :placeholder="placeholder" :value="props.modelValue"
-    @input="emit('update:modelValue', $event.target.value)" />
+  <div class="flex w-full relative">
+    <label :for="name" v-show="modelValue !== undefined" class="text-slate-400 uppercase text-[12px] absolute top-[-8px]">{{
+      label }}</label>
+    <input
+      class="w-full relative bg-transparent h-[48px] border-b border-slate-400 placeholder:text-slate-500 text-slate-300 outline-none text-xl"
+      :type="type" :name="name" :alt="alt" :placeholder="placeholder" :value="props.modelValue"
+      @input="emit('update:modelValue', $event.target.value)" />
+  </div>
 </template>
 <script setup>
 
