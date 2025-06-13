@@ -42,7 +42,7 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  disabled:{
+  disabled: {
     type: Boolean,
     default: false
   }

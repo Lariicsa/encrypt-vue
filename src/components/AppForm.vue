@@ -35,7 +35,7 @@
   </div>
 </template>
 <script setup>
-import { ref, defineEmits, computed } from 'vue'
+import { ref, computed } from 'vue'
 import AppButton from "@/components/AppButton.vue";
 import AppInput from '@/components/AppInput.vue';
 
