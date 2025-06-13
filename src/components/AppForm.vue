@@ -13,8 +13,8 @@
     </h2>
     <form @submit.prevent novalidate class="w-full h-full flex-col justify-center items-center mt-[48px]">
       <AppInput v-model="inputText" :label="label" :name="name" />
-      <AppButton :color="inputText === undefined ? 'disabled' : 'peach'" size="md" class="mt-[24px]"
-        :disabled="inputText === undefined" @click="click">
+      <AppButton :color="isTextTyped? 'disabled' : 'peach'" size="md" class="mt-[24px]"
+        :disabled="isTextTyped" @click="click">
         Encript
       </AppButton>
     </form>
@@ -35,7 +35,7 @@
   </div>
 </template>
 <script setup>
-import { ref, defineEmits } from 'vue'
+import { ref, defineEmits, computed } from 'vue'
 import AppButton from "@/components/AppButton.vue";
 import AppInput from '@/components/AppInput.vue';
 
@@ -76,4 +76,8 @@ const click = () => {
 const copyEncrypted = () => {
   emit("copyEncrypted");
 }
+
+const isTextTyped = computed(() => {
+  return inputText.value === undefined || inputText.value === '' ? true : false
+})
 </script>
