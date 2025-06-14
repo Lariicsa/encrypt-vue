@@ -1,8 +1,8 @@
 <template>
   <teleport to="body">
     <Transition name="fade">
-      <div v-if="toaster.visible" class="fixed top-6 right-3 px-4 py-3 rounded shadow-lg z-50"
-        :class="toastColor">
+      <div v-if="toaster.visible" class="fixed top-6 right-3 px-4 py-3 rounded shadow-lg z-50" role="alert"
+        aria-label="success" :class="toastColor">
         {{ toaster.message }}
       </div>
     </Transition>
@@ -31,6 +31,7 @@ const toastColor = computed(() => {
   opacity: 0;
   transform: translateY(-10px);
 }
+
 .fade-enter-active,
 .fade-leave-active {
   transition: all 0.3s ease;

@@ -29,11 +29,9 @@ function getEncrypted() {
 function copyEncrypted(text) {
   navigator.clipboard.writeText(text);
 }
-
 </script>
 
 <template>
-
   <div class="flex w-full h-fit">
     <div class="flex w-full mt-[32px] h-full">
       <AppForm :src="logo" :title="title" :subtitle="subtitle" label="your text" name="textToEncrypt"
@@ -44,6 +42,4 @@ function copyEncrypted(text) {
     </div>
   </div>
   <AppToaster/>
-
-
 </template>

@@ -11,7 +11,7 @@
     <h2 class="text-lg text-[#bcede8] mt-4">
       {{ subtitle }}
     </h2>
-    <form @submit.prevent novalidate class="w-full h-full flex-col justify-center items-center mt-[48px]">
+    <form @submit.prevent class="w-full h-full flex-col justify-center items-center mt-[48px]">
       <AppInput v-model="inputText" :label="label" :name="name" @resetInput="resetInput" />
       <AppButton :color="isTextTyped ? 'disabled' : 'peach'" size="md" class="mt-[24px]" :disabled="isTextTyped"
         @click="click">
@@ -29,7 +29,6 @@
         <div v-else class="flex justify-center items-center w-full h-full">
           <font-awesome-icon icon="fa-regular fa-file" class="w-8 h-10 text-slate-500" />
         </div>
-
       </div>
     </div>
   </div>
@@ -69,14 +68,12 @@ defineProps({
   },
 })
 const emit = defineEmits(['click', 'copyEncrypted'])
-
 const click = () => {
   emit('click')
 }
 const copyEncrypted = () => {
   emit("copyEncrypted");
 }
-
 const isTextTyped = computed(() => {
   return inputText.value === undefined || inputText.value === '' ? true : false
 })

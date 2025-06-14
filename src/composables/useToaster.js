@@ -11,11 +11,10 @@ let timeout = null
 export function useToaster() {
   function show(message, type = 'info', duration = 3000) {
     toaster.value = { visible: true, message, type }
-
-    // clearTimeout(timeout)
-    // timeout = setTimeout(() => {
-    //   toaster.value.visible = false
-    // }, duration)
+    clearTimeout(timeout)
+    timeout = setTimeout(() => {
+      toaster.value.visible = false
+    }, duration)
   }
 
   function hide() {
