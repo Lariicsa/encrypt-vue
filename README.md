@@ -1,6 +1,6 @@
 # Encrypt Text to AES
 
-This is a small app that convert simple text to AES cipher
+This is a small app that encrypts simple text to AES cipher
 
 
 ## Project Setup
@@ -18,3 +18,4 @@ npm run dev
 
 - Vuejs 3
 - Tailwind CSS
+- Deployed on Netlify
