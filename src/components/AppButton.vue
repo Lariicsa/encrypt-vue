@@ -2,9 +2,9 @@
 import { computed } from "vue";
 const color = computed(() => {
   return {
-    peach: "bg-gradient-to-r from-[#F89E7B] to-[#F58C64] text-[#373737]",
-    pink: "bg-gradient-to-r from-[#E5A9B7] to-[#CDA9E5] text-[#373737]",
-    blue: "bg-[#81B2F6] text-white",
+    peach: "bg-gradient-to-r from-[#F89E7B] to-[#F58C64] text-[#373737] active:saturate-200 sm:hover:saturate-150",
+    pink: "bg-gradient-to-r from-[#E5A9B7] to-[#CDA9E5] text-[#373737] active:saturate-200 sm:hover:saturate-150",
+    blue: "bg-[#81B2F6] text-white active:saturate-200 sm:hover:saturate-150",
     disabled: "bg-slate-600 sm:hover:bg-slate-600 cursor-none active:bg-slate-600 sm:hover:bg-slate-600"
   }[props.color];
 });
@@ -55,13 +55,14 @@ const click = () => {
 </script>
 <template>
   <a v-if="isLink" :href="link" target="_blank"
-    class="flex flex-col justify-center items-center border-none rounded-md text-center" role="button"
+    class="flex  justify-center items-center border-none rounded-md text-center" role="button"
     :class="`${color} ${size}`">
     <slot></slot>
   </a>
 
-  <button v-else role="button" @click="click()" @keyup="click()" class="flex flex-col justify-center items-center border-none rounded-md"
-    :class="`${color} ${size}`" :disabled="disabled">
+  <button v-else role="button" @click="click()" @keyup="click()"
+    class="flex flex-col justify-center items-center border-none rounded-md" :class="`${color} ${size}`"
+    :disabled="disabled">
     <slot></slot>
   </button>
 </template>

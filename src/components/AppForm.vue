@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex-col relative justify-center items-center w-full max-w-[400px] sm:max-w-[480px] h-full p-[24px] mx-auto bg-gray-700 mt-[56px] rounded-sm border border-slate-600">
+    class="flex-col relative justify-center items-center w-full h-full p-[24px] bg-gray-700 mt-[56px] rounded-md border border-slate-600 shadow-lg">
     <div class="w-[80px] h-auto min-h-[32px] mx-auto mt-[24px]">
       <img :src="src" :alt="alt" />
     </div>

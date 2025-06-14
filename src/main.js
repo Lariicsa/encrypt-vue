@@ -12,8 +12,10 @@ import App from "./App.vue";
 import router from "./router";
 
 import { faCopy, faFile, faCircleXmark } from "@fortawesome/free-regular-svg-icons";
+/* @fontawesome Brands */
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-library.add(faCopy, faFile, faCircleXmark);
+library.add(faCopy, faFile, faCircleXmark, faGithub);
 
 const app = createApp(App);
 
