@@ -1,15 +1,31 @@
-import { ref } from "vue";
+import { ref } from 'vue'
 
-let id = 0;
-const toastr = ref([]);
+export const toaster = ref({
+  visible: false,
+  message: '',
+  type: 'info',
+})
+
+let timeout = null
 
 export function useToaster() {
-  const show = true
+  function show(message, type = 'info', duration = 3000) {
+    toaster.value = { visible: true, message, type }
+
+    // clearTimeout(timeout)
+    // timeout = setTimeout(() => {
+    //   toaster.value.visible = false
+    // }, duration)
+  }
+
+  function hide() {
+    toaster.value.visible = false
+    clearTimeout(timeout)
+  }
 
   return {
-    toastr,
-    isSuccess: (msg, duration) => show(msg, "success !", duration),
-    isError: (msg, duration) => show(msg, "error", duration),
-    isInfo: (msg, duration) => show(msg, "info", duration),
-  };
+    toaster,
+    show,
+    hide,
+  }
 }

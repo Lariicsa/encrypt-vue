@@ -2,10 +2,8 @@
 import { ref, inject } from 'vue'
 import AppForm from '@/components/AppForm.vue';
 import CryptoJS from 'crypto-js'
-
 import AppToaster from '@/components/AppToaster.vue'
-
-
+import { useToaster } from '@/composables/useToaster'
 
 const logo = ('/planet_express_logo.svg')
 const title = 'Hi there !'
@@ -16,9 +14,16 @@ const encryptedText = ref(undefined)
 const mySecret = 'turangaLeela'
 const isEncrypted = ref(false)
 
+const { show } = useToaster()
+
+function triggerSuccess() {
+  show('Text encrypted ! 🥷', 'success', 3000)
+}
+
 function getEncrypted() {
   encryptedText.value = CryptoJS.AES.encrypt(inputText.value, mySecret).toString()
   isEncrypted.value = true
+  triggerSuccess()
 }
 
 function copyEncrypted(text) {
@@ -38,6 +43,7 @@ function copyEncrypted(text) {
       </AppForm>
     </div>
   </div>
+  <AppToaster/>
 
 
 </template>

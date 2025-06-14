@@ -1,4 +1,5 @@
 import defaultTheme from "tailwindcss/defaultTheme";
+const colors = require('tailwindcss/colors')
 
 export default {
 	darkMode: 'class',
