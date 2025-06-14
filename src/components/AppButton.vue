@@ -60,7 +60,7 @@ const click = () => {
     <slot></slot>
   </a>
 
-  <button v-else role="button" @click="click()" class="flex flex-col justify-center items-center border-none rounded-md"
+  <button v-else role="button" @click="click()" @keyup="click()" class="flex flex-col justify-center items-center border-none rounded-md"
     :class="`${color} ${size}`" :disabled="disabled">
     <slot></slot>
   </button>

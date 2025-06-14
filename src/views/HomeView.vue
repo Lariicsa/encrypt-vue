@@ -11,8 +11,8 @@ const subtitle = 'Convert your text to AES Encryption'
 const mySecret = 'turangaLeela'
 
 //States
-const inputText = ref(undefined)
-const encryptedText = ref(undefined)
+const inputText = ref('')
+const encryptedText = ref('')
 const isEncrypted = ref(false)
 
 //Composable and externs
@@ -23,7 +23,6 @@ const triggerSuccess = () => {
 }
 
 function getEncrypted() {
-  if (!inputText.value) return
   encryptedText.value = CryptoJS.AES.encrypt(inputText.value, mySecret).toString()
   isEncrypted.value = true
   triggerSuccess()
@@ -37,13 +36,18 @@ const copyEncrypted = async (text) => {
     show(`Ups, not copied! ${err}`, 'error', 2000)
   }
 }
+const resetInput = () => {
+  inputText.value = ''
+  encryptedText.value = ''
+  isEncrypted.value = false
+}
 </script>
 
 <template>
   <div class="flex w-full h-fit mt-8">
     <AppForm :src="logo" :title="title" :subtitle="subtitle" label="your text" name="textToEncrypt"
       :isEncrypted="isEncrypted" :inputText="inputText" alt="Logo Planet Express" @click="getEncrypted"
-      @copyEncrypted="() => copyEncrypted(encryptedText)">
+      @copyEncrypted="copyEncrypted(encryptedText)" @resetInput="resetInput">
       {{ encryptedText }}
     </AppForm>
     <AppToaster />

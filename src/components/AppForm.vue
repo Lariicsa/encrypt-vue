@@ -11,10 +11,10 @@
     <h2 class="text-lg text-[#bcede8] mt-4">
       {{ subtitle }}
     </h2>
-    <form @submit.prevent class="w-full h-full flex-col justify-center items-center mt-[48px]">
+    <form @submit.prevent class="w-full h-full flex-col justify-center items-center mt-12">
       <AppInput v-model="inputText" :label="label" :name="name" @resetInput="resetInput" />
       <AppButton :color="isTextTyped ? 'disabled' : 'peach'" size="md" class="mt-[24px]" :disabled="isTextTyped"
-        @click="click">
+        @click="emitClick">
         Encript
       </AppButton>
     </form>
@@ -38,7 +38,7 @@ import { ref, computed } from 'vue'
 import AppButton from "@/components/AppButton.vue";
 import AppInput from '@/components/AppInput.vue';
 
-const inputText = ref(undefined)
+const inputText = ref('')
 
 defineProps({
   src: {
@@ -67,17 +67,18 @@ defineProps({
     default: false
   },
 })
-const emit = defineEmits(['click', 'copyEncrypted'])
-const click = () => {
+const emit = defineEmits(['click', 'copyEncrypted', 'resetInput'])
+const emitClick = () => {
   emit('click')
 }
 const copyEncrypted = () => {
   emit("copyEncrypted");
 }
-const isTextTyped = computed(() => {
-  return inputText.value === undefined || inputText.value === '' ? true : false
-})
+
+const isTextTyped = computed(() => inputText.value.trim() === '')
+
 const resetInput = () => {
-  inputText.value = undefined
+  inputText.value = ''
+  emit('resetInput')
 }
 </script>
